@@ -1,62 +1,4 @@
-<!doctype html>
-<html lang="en">
-<head>
-  <meta charset="utf-8"/>
-  <meta name="viewport" content="width=device-width,initial-scale=1"/>
-  <title>Eye + QR Scanner with Camera Controls</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"/>
-  <style>
-    body { background:#f8f9fa; }
-    .camera-container { max-width:980px; margin:1.5rem auto; position:relative; }
-    video { width:100%; border-radius:10px; background:black; display:block; }
-    canvas#overlay { position:absolute; left:0; top:0; pointer-events:none; }
-    .controls { display:flex; flex-wrap:wrap; gap:8px; justify-content:center; margin-top:12px; }
-    .controls button { min-width:120px; }
-    #preview img, #preview video { max-width:100%; margin-top:10px; border-radius:8px; border:1px solid #ddd; }
-    #errorMsg { color:#b00020; min-height:1.2em; text-align:center; margin-top:6px; }
-    .note { font-size:0.85rem; color:#6c757d; text-align:center; margin-top:8px; }
-    .small-info { font-size:0.95rem; }
-  </style>
-</head>
-<body>
-  <div class="container py-3">
-    <h4 class="text-center mb-2">👁️ Eye + QR Scanner — Camera Controls</h4>
-
-    <div class="camera-container shadow-sm bg-white p-3">
-      <div style="position:relative">
-        <video id="video" autoplay playsinline muted></video>
-        <canvas id="overlay"></canvas>
-      </div>
-
-      <div class="text-center mt-3">
-        <div class="small-info">Eyes: <strong id="detectedName">None</strong> · QR: <strong id="qrResult">None</strong></div>
-        <div id="errorMsg" class="small"></div>
-        <div class="note">Use HTTPS / localhost. Works best in Chrome. QR scan runs every 300ms.</div>
-      </div>
-
-      <div class="controls mt-3">
-        <button id="switchBtn" class="btn btn-outline-secondary">🔄 Switch Camera</button>
-        <button id="flashBtn" class="btn btn-outline-warning" disabled>🔦 Flash</button>
-        <button id="zoomInBtn" class="btn btn-outline-primary" disabled>➕ Zoom In</button>
-        <button id="zoomOutBtn" class="btn btn-outline-primary" disabled>➖ Zoom Out</button>
-        <button id="captureBtn" class="btn btn-success">📸 Capture Photo</button>
-        <button id="recordBtn" class="btn btn-danger">⏺️ Record</button>
-        <button id="downloadPhotoBtn" class="btn btn-link" style="display:none">⬇️ Download Photo</button>
-        <button id="downloadVideoBtn" class="btn btn-link" style="display:none">⬇️ Download Video</button>
-      </div>
-
-      <div id="preview" class="text-center mt-3"></div>
-    </div>
-  </div>
-
-  <!-- MediaPipe Pose -->
-  <script src="https://cdn.jsdelivr.net/npm/@mediapipe/pose/pose.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/@mediapipe/camera_utils/camera_utils.js"></script>
-  <!-- jsQR for QR code scanning -->
-  <script src="https://cdn.jsdelivr.net/npm/jsqr@1.4.0/dist/jsQR.js"></script>
-
-  <script>
-  (async () => {
+(async () => {
     // UI references
     const video = document.getElementById('video');
     const overlay = document.getElementById('overlay');
@@ -237,6 +179,3 @@
     await startCamera(devices[currentDeviceIndex]?.deviceId);
     initPose(); startPose(); startQR();
   })();
-  </script>
-</body>
-</html>

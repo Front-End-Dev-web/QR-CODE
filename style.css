@@ -1,0 +1,10 @@
+    body { background:#f8f9fa; }
+    .camera-container { max-width:980px; margin:1.5rem auto; position:relative; }
+    video { width:100%; border-radius:10px; background:black; display:block; }
+    canvas#overlay { position:absolute; left:0; top:0; pointer-events:none; }
+    .controls { display:flex; flex-wrap:wrap; gap:8px; justify-content:center; margin-top:12px; }
+    .controls button { min-width:120px; }
+    #preview img, #preview video { max-width:100%; margin-top:10px; border-radius:8px; border:1px solid #ddd; }
+    #errorMsg { color:#b00020; min-height:1.2em; text-align:center; margin-top:6px; }
+    .note { font-size:0.85rem; color:#6c757d; text-align:center; margin-top:8px; }
+    .small-info { font-size:0.95rem; }
